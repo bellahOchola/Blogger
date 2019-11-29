@@ -12,6 +12,10 @@ def index():
 	return render_template('index.html',title = title)
 
 
-@main.route('/blog')
+@main.route('/blog', methods = ['GET', 'POST'])
+@login_required
 def blog():
-	form = 
+	form = BlogForm()
+	if form.validate_on_submit():
+		title = form.title.data
+		content = form.content.data

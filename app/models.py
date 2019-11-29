@@ -31,3 +31,22 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f'User {self.username}'
+
+    
+class Blogs(db.Model, UserMixin):
+    __tablename__ = 'blog'
+    id = db.Column(db.Integer, priimary_key = True)
+    blog_id = db.Column(db.Integer)
+    blog_title = db.Column(db.String)
+    blog_content = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+    def save_blog(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_blog(cls, id):
+        blog = Blogs.query.filter_by(blog_id=id).all()
+        return blog
