@@ -1,6 +1,6 @@
 from . import main
 from flask import render_template,redirect
-# from .forms import PomodForm
+from .forms import BlogForm
 from flask_login import login_required,current_user
 from ..models import User
 
@@ -10,3 +10,8 @@ def index():
 
 	title = 'Blog'
 	return render_template('index.html',title = title)
+
+
+@main.route('/blog')
+def blog():
+	form = 
