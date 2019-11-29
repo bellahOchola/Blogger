@@ -7,9 +7,9 @@ from ..models import User, Blogs
 
 @main.route('/')
 def index():
-
+	vlogs = Blogs.query.all()
 	title = 'Blog'
-	return render_template('index.html',title = title)
+	return render_template('index.html',title = title, vlogs = vlogs)
 
 
 @main.route('/blog', methods = ['GET', 'POST'])
