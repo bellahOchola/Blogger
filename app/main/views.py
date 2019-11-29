@@ -3,6 +3,7 @@ from flask import render_template,redirect,url_for
 from .forms import BlogForm
 from flask_login import login_required,current_user
 from ..models import User, Blogs
+from ..request import get_quotes
 
 
 @main.route('/')
