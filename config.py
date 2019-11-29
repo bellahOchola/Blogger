@@ -1,10 +1,9 @@
 import os
 
 class Config:
-    class Config:
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	UPLOADED_PHOTOS_DEST ='app/static/photos'
-	SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:bellah@1972@localhost/pomodoro'
+	SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:bellah@1972@localhost/blog'
 
 	MAIL_SERVER = 'smtp.googlemail.com'
 	MAIL_PORT = 587
@@ -19,10 +18,11 @@ class Config:
 
 class ProdConfig(Config):
     pass
+    
 
 
 class DevConfig(Config):
-	SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:bellah@1972@localhost/pomodoro'
+	SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:bellah@1972@localhost/blog'
 
 	DEBUG = True
 

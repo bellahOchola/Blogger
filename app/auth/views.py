@@ -4,7 +4,7 @@ from . import auth
 from ..models import User
 from .forms import LoginForm,RegistrationForm
 from .. import db
-from ..email import mail_message
+# from ..email import mail_message
 
 @auth.route('/login',methods=['GET','POST'])
 def login():
@@ -30,11 +30,11 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to Our Promodoro","email/welcome",user.email,user=user)
+        # mail_message("Welcome to Our Promodoro","email/welcome",user.email,user=user)
 
         return redirect(url_for('auth.login'))
         title = "New Account"
-    return render_template('auth/register.html',registration_form = form)
+    return render_template('auth/signup.html',registration_form = form)
 
 @auth.route('/logout')
 @login_required

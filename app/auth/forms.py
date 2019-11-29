@@ -5,8 +5,6 @@ from wtforms import ValidationError
 
 from ..models import User
 
-
-
 class RegistrationForm(FlaskForm):
     '''
     this is the registration form that prompts users to enter their desired detsils
@@ -32,3 +30,5 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password',validators =[Required()])
     remember = BooleanField('Remember me')
     submit = SubmitField('Sign In')
+
+
