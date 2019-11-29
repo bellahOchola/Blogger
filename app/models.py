@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     full_name = db.Column(db.String)
     email = db.Column(db.String)
     pass_word = db.Column(db.String)
+    blogg = db.relationship('Blogs', backref = 'user', lazy = 'dynamic')
 
     @property
     def password(self):

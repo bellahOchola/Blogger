@@ -2,7 +2,7 @@ from . import main
 from flask import render_template,redirect
 from .forms import BlogForm
 from flask_login import login_required,current_user
-from ..models import User
+from ..models import User, Blogs
 
 
 @main.route('/')
@@ -19,3 +19,10 @@ def blog():
 	if form.validate_on_submit():
 		title = form.title.data
 		content = form.content.data
+
+		new_blog = Blogs(blog_title = title, blog_content = content, user = current_user)
+		new_blog.save_blog()
+		return redirect (url_for('.index'))
+
+	return render_template('blog.html', blog_form = form)
+
