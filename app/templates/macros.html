@@ -1,1 +1,16 @@
-{%  %}
+{% macro display(blog) %}
+<div class="container">
+    {% for blogs in blog %}
+    <div class="row">
+        <div class="col-md-4">
+            <h3>{{blogs.blog_title}}</h3>
+            <div class="card-body">
+                <p>{{blogs.blog_content}}</p>
+
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endmacro %}
