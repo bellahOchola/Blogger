@@ -9,8 +9,9 @@ from ..request import get_quotes
 @main.route('/')
 def index():
 	vlogs = Blogs.query.all()
+	quotes = get_quotes()
 	title = 'Blog'
-	return render_template('index.html',title = title, vlogs = vlogs)
+	return render_template('index.html',title = title, vlogs = vlogs, quotes = quotes)
 
 
 @main.route('/blog', methods = ['GET', 'POST'])

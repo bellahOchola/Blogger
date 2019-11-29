@@ -1,6 +1,6 @@
 from . import create_app
 import requests
-from .models import 
+from .models import Quotes
 
 def get_quotes():
     response = requests.get('http://quotes.stormconsultancy.co.uk/random.json')

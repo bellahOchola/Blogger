@@ -51,3 +51,13 @@ class Blogs(db.Model, UserMixin):
     def get_blog(cls, id):
         blog = Blogs.query.filter_by(blog_id=id).all()
         return blog
+
+class Quotes:
+    '''
+    class that returns the quotes objects
+    '''
+
+    def __init__(self,author,id,quote):
+        self.id = id
+        self.author = author
+        self.quote = quote
