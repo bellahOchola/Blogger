@@ -5,19 +5,19 @@ from . import login_manager
 from . import db
 
 @login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+def load_user(writer_id):
+    return Writer.query.get(int(writer_id))
 
 
-class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+class Writer(db.Model, UserMixin):
+    __tablename__ = 'writers'
 
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(255), index = True)
     full_name = db.Column(db.String)
     email = db.Column(db.String)
     pass_word = db.Column(db.String)
-    blogg = db.relationship('Blogs', backref = 'user', lazy = 'dynamic')
+    blogg = db.relationship('Blogs', backref = 'writer', lazy = 'dynamic')
 
     @property
     def password(self):
@@ -31,7 +31,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.pass_word, password)
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f'Writer {self.username}'
 
     
 class Blogs(db.Model, UserMixin):
@@ -41,11 +41,14 @@ class Blogs(db.Model, UserMixin):
     blog_title = db.Column(db.String)
     blog_content = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    writer_id = db.Column(db.Integer,db.ForeignKey("writers.id"))
 
     def save_blog(self):
         db.session.add(self)
         db.session.commit()
+
+    def delete_blog(self)
+        db.session.delete()
 
     @classmethod
     def get_blog(cls, id):
