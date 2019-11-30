@@ -47,7 +47,7 @@ class Blogs(db.Model, UserMixin):
         db.session.add(self)
         db.session.commit()
 
-    def delete_blog(self)
+    def delete_blog(self):
         db.session.delete()
 
     @classmethod
