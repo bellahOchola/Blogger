@@ -33,6 +33,29 @@ class Writer(db.Model, UserMixin):
     def __repr__(self):
         return f'Writer {self.username}'
 
+class User(db.Model, UserMixin):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(255), index = True)
+    full_name = db.Column(db.String)
+    email = db.Column(db.String)
+    pass_word = db.Column(db.String)
+
+    @property
+    def password(self):
+        raise  AttributeError('You cannot read the password attribute')
+
+    @password.setter
+    def password(self,password):
+        self.pass_word = generate_password_hash(password)
+
+    def verify_password(self,password):
+        return check_password_hash(self.pass_word, password)
+
+    def __repr__(self):
+        return f'User {self.username}'
+
     
 class Blogs(db.Model, UserMixin):
     __tablename__ = 'blog'
@@ -54,6 +77,14 @@ class Blogs(db.Model, UserMixin):
     def get_blog(cls, id):
         blog = Blogs.query.filter_by(blog_id=id).all()
         return blog
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey(users.user_id), nullable = False)
+
 
 class Quotes:
     '''
