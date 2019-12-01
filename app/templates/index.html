@@ -2,14 +2,15 @@
 
 {% block content %}
 <body style="background-color:#150811">
+	<h1 class="text-center" style="color: white; margin-bottom: 30px;">WELCOME TO BLOGGERS SITE.</h1>
 	<div class="container">
 		<div class="row">
 				<div class="col-md-6">
 						<div class="container">
 						{% for blogs in vlogs %}
 						<div class="row">
-							<div class="col-md-12 card" style="background-color: #F7E1D7; font-size:15px; margin-bottom:20px;">
-								<div class="card-header">
+							<div class="col-md-12 card" style="background-color: #F7E1D7; font-size:15px; margin-bottom:20px; width: 100%;">
+								<div class="card-header" st>
 									{{blogs.blog_title|upper}}
 								</div>
 								<div class="card-body">
@@ -23,7 +24,7 @@
 						</div>
 						<div class="col-md-6">
 							<div class="container">
-								<div class="card" style="background-color: #F7E1D7; font-size:15px;">
+								<div class="card" style="background-color: #F7E1D7; font-size:15px;  width:70%;">
 									<div class="card-title">
 										A quote by:{{quotes.author}}
 									</div>
