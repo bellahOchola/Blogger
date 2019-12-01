@@ -11,7 +11,7 @@ def index():
 	vlogs = Blogs.query.all()
 	quotes = get_quotes()
 	title = 'Blog'
-	return render_template('index.html',title = title, vlogs = vlogs, quote = quotes)
+	return render_template('index.html',title = title, vlogs = vlogs, quotes = quotes)
 
 
 @main.route('/blog', methods = ['GET', 'POST'])

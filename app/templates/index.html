@@ -1,20 +1,30 @@
 {% extends 'base.html' %}
-{% import 'macros.html' as macro %}
 
 {% block content %}
 <div class="container">
-	<!-- <h1 class="text-center">Bloggers</h1> -->
-	 {{ macro.display(vlogs) }}
-
-</div>
+		{% for blogs in vlogs %}
+		<div class="row">
+			<div class="col-md-6 card">
+				<h3>{{blogs.blog_title}}</h3>
+				<div class="card-body">
+					<p>{{blogs.blog_content}}</p>
+					<a href="{{url_for('.comment',blog_id = blogs.id)}}" class="btn btn-primary btn-sm"> Comment</a>
+	
+	
+				</div>
+	
+			</div>
+		
+		{% endfor %}
+	</div>
 <div class="col-md-4">
 		<div class="container">
 			<div class="card cardquote">
 				<div class="card-title">
-					<h4>A quote by: <span style="color: rgb(3, 3, 3)">{{quote.author}}</span> </h4>
+					<h4>A quote by:{{quotes.author}}</h4>
 				</div>
-				<p class="card-text">{{quote.quote}}</p>
+				<p class="card-text">{{quotes.quote}}</p>
 			</div>
 		</div>
-
+		
 {% endblock %}
