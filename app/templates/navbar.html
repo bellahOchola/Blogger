@@ -1,12 +1,19 @@
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/blog">Blog</a></li>
-              <li><a href="/login">Login</a></li>
-              <li><a href="/register">Sign Up</a></li>
-            </ul>
-        </div>
+<div class="navbar navbar-inverse" role="navigation" style="background-color:black; border:none; font-size:18px;">
+      <div class="container-fluid">
+          <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-left">
+                  <li><a href="/">Home</a></li>
+              </ul>
+              <ul class="">
+                  {% if current_user.is_authenticated %}
+                  <li class="nav navbar-nav navbar-left"><a href="{{url_for('main.blog')}}">PostBlog</a></li>
+                  <li class="nav navbar-nav navbar-right"><a href="{{url_for('auth.logout')}}">Log out</a></li>
+                  {% else %}
+                  <li class="nav navbar-nav navbar-right"><a href="{{url_for('auth.login')}}">LogIn</a></li>
+                  <li class="nav navbar-nav navbar-right"><a href="{{url_for('auth.register')}}">SignUp</a></li>
+                  {%endif%}
+              </ul>
+          </div>
       </div>
   </div>
+  
