@@ -2,39 +2,43 @@
 
 {% block content %}
 <body style="background-color:#150811">
-	<div class="col-md-6">
 	<div class="container">
-	{% for blogs in vlogs %}
-	<div class="row">
-		<div class="col-md-6 card" style="background-color: #F7E1D7; font-size:15px;">
-			<div class="card-header">
-				{{blogs.blog_title}}
-			</div>
-			<div class="card-body">
-				<p class="card-text">{{blogs.blog_content}}</p>
-				<a href="{{url_for('.comment',blog_id = blogs.id)}}" class="btn btn-primary btn-sm"> Comment</a>
-				<!-- <p class="card-text">{{blogs.}}</p> -->
-			</div>
+		<div class="row">
+				<div class="col-md-6">
+						<div class="container">
+						{% for blogs in vlogs %}
+						<div class="row">
+							<div class="col-md-12 card" style="background-color: #F7E1D7; font-size:15px; margin-bottom:20px;">
+								<div class="card-header">
+									{{blogs.blog_title|upper}}
+								</div>
+								<div class="card-body">
+									<p class="card-text">{{blogs.blog_content}}</p>
+									<a href="{{url_for('.comment',blog_id = blogs.id)}}" class="btn btn-primary btn-sm"> COMMENT</a>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+						</div>
+						</div>
+						<div class="col-md-6">
+							<div class="container">
+								<div class="card" style="background-color: #F7E1D7; font-size:15px;">
+									<div class="card-title">
+										A quote by:{{quotes.author}}
+									</div>
+									<div class="card-body">
+										<p class="card-text">{{quotes.quote}}</p>
+									</div>
+									
+								</div>
+						</div>
+						</div>
+					
+					{% endblock %}
 		</div>
 	</div>
-	{% endfor %}
-	</div>
-	</div>
-	<div class="col-md-6">
-		<div class="container">
-			<div class="card" style="background-color: #F7E1D7; font-size:15px;">
-				<div class="card-title">
-					A quote by:{{quotes.author}}
-				</div>
-				<div class="card-body">
-					<p class="card-text">{{quotes.quote}}</p>
-				</div>
-				
-			</div>
-	</div>
-	</div>
-
-{% endblock %}
+	
 </body>
 		
 		
