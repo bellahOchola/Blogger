@@ -15,7 +15,7 @@ class TestSubscriber(unittest.TestCase):
         '''
         Subscriber.query.delete()
 
-    def save_subscriber(sefl):
+    def save_subscriber(self):
         '''
         method that helps test if subscriber is saved
         '''

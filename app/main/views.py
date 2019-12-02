@@ -2,9 +2,10 @@ from . import main
 from flask import render_template,redirect,url_for, request, flash
 from .forms import BlogForm, CommentForm
 from flask_login import login_required,current_user
-from ..models import Writer, Blogs, Comment, Subscriber
+from ..models import User, Blogs, Comment, Subscriber
 from ..request import get_quotes
 from ..email import mail_message
+from .. import db
 
 
 @main.route('/')
@@ -23,7 +24,7 @@ def blog():
 		title = form.title.data
 		content = form.content.data
 
-		new_blog = Blogs(blog_title = title, blog_content = content, writer = current_user)
+		new_blog = Blogs(blog_title = title, blog_content = content, user = current_user)
 		new_blog.save_blog()
 		return redirect (url_for('.index'))
 
@@ -43,11 +44,21 @@ def comment(blog_id):
     return render_template('comments.html', comment_form =comment_form)
 
 
-@main.route('/subscribe',methods = ['POST','GET'])
+@main.route('/subscribe',methods = ['GET','POST'])
 def subscribe():
     email = request.form.get('subscriber')
     new_subscriber = Subscriber(email = email)
     new_subscriber.save_subscriber()
-    mail_message("Subscribed to Bloggers site.                  ","email/welcome_subscriber",new_subscriber.email,new_subscriber=new_subscriber)
+    mail_message("Subscribed to Bloggers site.","email/welcome_subscriber",new_subscriber.email,new_subscriber=new_subscriber)
     flash('Sucessfuly subscribed')
+    return redirect(url_for('main.index'))
+
+@main.route('/delete/<blog_id>')
+@login_required
+def delete(blog_id):
+    deleteitem = Blogs.query.filter_by(id=blog_id).first()
+
+    db.session.delete(deleteitem)
+    db.session.commit()
+
     return redirect(url_for('main.index'))
