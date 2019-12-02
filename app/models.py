@@ -9,7 +9,7 @@ def load_user(writer_id):
     return Writer.query.get(int(writer_id))
 
 
-class Writer(db.Model, UserMixin):
+class Writer(db.Model):
     __tablename__ = 'writers'
 
     id = db.Column(db.Integer, primary_key = True)
@@ -57,7 +57,7 @@ class User(db.Model, UserMixin):
         return f'User {self.username}'
 
     
-class Blogs(db.Model, UserMixin):
+class Blogs(db.Model):
     __tablename__ = 'blog'
     id = db.Column(db.Integer, primary_key = True)
     blog_id = db.Column(db.Integer)

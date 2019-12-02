@@ -1,53 +1,56 @@
 {% extends 'base.html' %}
+{% block navbar %}
+  {%include 'navbar.html'%}
+{%endblock%}
 
 {% block content %}
-<body style="background-color:#150811">
+<body style="background-color:#150811;; font-family: 'Shadows Into Light', cursive;">
 	<h1 class="text-center" style="color: white; margin-bottom: 30px;">WELCOME TO BLOGGERS SITE.</h1>
 	<div class="container">
 		<div class="row">
-				<div class="col-md-6">
-						<div class="container">
-						{% for blogs in vlogs %}
-						<div class="row">
-							<div class="col-md-12 card" style="background-color: #F7E1D7; font-size:15px; margin-bottom:20px; width: 100%;">
-								<div class="card-header" style="color:#2E86AB">
-									{{blogs.blog_title|upper}}
-								</div>
-								<div class="card-body">
-									<p class="card-text">{{blogs.blog_content}}</p>
-									<a href="{{url_for('.comment',blog_id = blogs.id)}}" class="btn btn-info btn-sm"> COMMENT</a>
-								</div>
+			<div class="col-md-6">
+				<div class="container">
+				{% for blogs in vlogs %}
+					<div class="row">
+						<div class="col-md-12 card" style="background-color: #F7E1D7; font-size:15px; margin-bottom:20px; width: 100%;">
+							<div class="card-header" style="color:#2E86AB">
+								{{blogs.blog_title|upper}}
+							</div>
+							<div class="card-body">
+								<p class="card-text">{{blogs.blog_content}}</p>
+								<a href="{{url_for('.comment',blog_id = blogs.id)}}" class="btn btn-info btn-sm"> COMMENT</a>
 							</div>
 						</div>
-						{% endfor %}
+					</div>
+				{% endfor %}
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card" style="background-color: #F7E1D7; font-size:15px;  width:90%;">
+					<div class="card-title">
+						A quote by: <span style="color:#2E86AB ;">{{quotes.author}}</span>
+					</div>
+					<div class="card-body">
+						<p class="card-text">{{quotes.quote}}</p>
+					</div>
+				</div>
+				<div class="container-fluid">
+					<form class="form-inline ml-2" action="{{url_for('main.subscribe')}}" method="POST">
+						<div class="md-form form-group">
+							<input type="email"  class="form-control " name ="subscriber" style="margin-top: 40px; background-color:#F7E1D7;  margin-right: 20px; height: 30px; font-size: 15px; border: none;" placeholder="Email..." required>
 						</div>
+						<div class="md-form form-group">
+							<button class="btn btn-sm btn-info" style="margin-top: 40px; height: 30px;">SUBSCRIBE</button>
 						</div>
-						<div class="col-md-6">
-								<div class="card" style="background-color: #F7E1D7; font-size:15px;  width:90%;">
-									<div class="card-title">
-										A quote by: <span style="color:#2E86AB ;">{{quotes.author}}</span>
-									</div>
-									<div class="card-body">
-										<p class="card-text">{{quotes.quote}}</p>
-									</div>
-								</div>
-								<div class="container-fluid">
-										
-										<form class="form-inline ml-2" action="{{url_for('main.subscribe')}}" method="POST">
-											<div class="md-form form-group">
-												<input type="email"  class="form-control " name ="subscriber" style="margin-top: 40px; background-color:#F7E1D7;  margin-right: 20px; height: 30px; font-size: 15px; border: none;" placeholder="Email..." required>
-											</div>
-											<div class="md-form form-group">
-												<button class="btn btn-sm btn-info" style="margin-top: 40px; height: 30px;">SUBSCRIBE</button>
-											</div>
-										</form>
-										{% for message in get_flashed_messages() %}
-										<div class="alert alert-success">
-										<button type="button" class="close" style="margin-top:10px;" data-dismiss="alert">&times;</button>
-										{{ message }}
-										</div>
-										{% endfor %}
-									</div>
+					</form>
+					{% for message in get_flashed_messages() %}
+					<div class="alert alert-success">
+						<button type="button" class="close" style="margin-top:10px;" data-dismiss="alert">&times;</button>
+						{{ message }}
+					</div>
+					{% endfor %}
+				</div>
+						
 
 					
 								<!-- <div class="container-fluid">

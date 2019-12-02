@@ -1,16 +1,16 @@
 <div class="navbar navbar-inverse" role="navigation" style="background-color:#26081C; border:none; font-size:15px; ">
       <div class="container-fluid">
-          <div class="navbar-collapse collapse" style=" color: white;">
+          <div class="navbar-collapse collapse" >
               <ul>
-                  <li class="nav navbar-nav navbar-left" style="margin-right: 10px; margin-top: 10px;"><a href="/">Home</a></li>
+                  <li class="nav navbar-nav navbar-left" style="margin-right: 10px; margin-top: 10px; color: white;"><a style=" color: white;" href="/">Home</a></li>
               </ul>
               <ul class="">
                   {% if current_user.is_authenticated %}
-                  <li class="nav navbar-nav navbar-left"><a href="{{url_for('main.blog')}}">PostBlog</a></li>
-                  <li class="nav navbar-nav navbar-right"><a href="{{url_for('auth.logout')}}">Log out</a></li>
+                  <li class="nav navbar-nav navbar-left"><a style=" color: white;" href="{{url_for('main.blog')}}">PostBlog</a></li>
+                  <li class="nav navbar-nav navbar-right"><a style=" color: white;" href="{{url_for('auth.logout')}}">Log out</a></li>
                   {% else %}
-                  <li class="nav navbar-nav navbar-right"><a href="{{url_for('auth.login')}}">LogIn</a></li>
-                  <li class="nav navbar-nav navbar-right"><a href="{{url_for('auth.register')}}">SignUp</a></li>
+                  <li class="nav navbar-nav navbar-right"><a style=" color: white;" href="{{url_for('auth.login')}}">LogIn</a></li>
+                  <li class="nav navbar-nav navbar-right"><a style=" color: white; margin-right: 20px;" href="{{url_for('auth.register')}}">SignUp</a></li>
                   {%endif%}
               </ul>
           </div>
