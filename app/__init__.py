@@ -27,10 +27,6 @@ def create_app(config_name):
     mail.init_app(app)
     login_manager.init_app(app)
 
-    # configure UploadSet
-    configure_uploads(app,photos)
-
-
     # Registering the blueprint
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
@@ -39,3 +35,4 @@ def create_app(config_name):
     app.register_blueprint(auth_blueprint)
 
     return app
+
