@@ -3,10 +3,9 @@
 
 {% block content %}
 <body style="background-color:#F7E1D7; font-size: 15px;">
-  <div class="container">
-    <div class="row" style="margin-top: 50px">
-      <div class= "col-md-4"> </div>
-      <div class="col-md-4" style="">
+    <!-- <div class="row" style="margin-top: 50px"> -->
+      <div class= "col-md-6"  style=" "> <img src="https://cdn.pixabay.com/photo/2018/04/07/18/06/diary-3299128_960_720.jpg" alt="" height ='660px' width= '100%'></div>
+      <div class="col-md-6" style=" width:30%; height:40%; margin-top: 150px; margin-left:50px; font-family: 'Baskervville', serif; font-size: 18px; text-decoration: none; ">
       <!--Flash message -->
       {% for message in get_flashed_messages() %}
         <div class="alert alert-danger">
@@ -18,9 +17,7 @@
       {{wtf.quick_form(login_form)}}
       <!-- <p> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p> -->
       </div>
-      <div clas="col-md-4"> </div>
-    </div>
-  </div>
+    <!-- </div> -->
 </body>
 
 
