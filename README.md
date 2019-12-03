@@ -11,7 +11,7 @@ This app is a simple platform for both users and writers of blogs. The writers s
 * Install the modules in the requirements.txt file.
 * Run the code on terminal using ./start.sh 
 ## Live Page
-
+https://bellahblog.herokuapp.com/
 ## BDD
 | Behaviour | Output |
 | :---------------- | :---------------: |
